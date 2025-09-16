@@ -37,8 +37,6 @@ public abstract class Operation {
 	public void setMontant(double montant) {
 		this.montant = montant;
 	}
-	
-    public abstract String getDetails();
 
 	public String getType() {
 		return type;

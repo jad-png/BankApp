@@ -1,20 +1,15 @@
 package bankaMeak.model;
 
 public class CompteCourant extends Compte {
-	private double decouvert;
+	private double decouvert = 600;
 	
-	public CompteCourant(int code, String userName, double decouvert) {
+	public CompteCourant(int code, String userName) {
 		super(code, userName);
-		this.decouvert = decouvert;
 	}
 	
 
 	public double getDecouvert() {
 		return decouvert;
-	}
-
-	public void setDecouvert(double decouvert) {
-		this.decouvert = decouvert;
 	}
 	
 	@Override

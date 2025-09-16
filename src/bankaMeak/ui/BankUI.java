@@ -1,4 +1,4 @@
-package bankaMeak.view;
+package bankaMeak.ui;
 
 public class BankUI {
 

@@ -11,9 +11,4 @@ public class Retrait extends Operation {
 	public String getDestination() {
 		return destination;
 	}
-	@Override
-	public String getDetails() {
-		return null;
-	}
-
 }

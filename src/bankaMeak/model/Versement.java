@@ -1,7 +1,5 @@
 package bankaMeak.model;
 
-import java.time.LocalDate;
-
 public class Versement extends Operation {
 	public String source;
 
@@ -13,12 +11,4 @@ public class Versement extends Operation {
 	public String getSource() {
 		return source;
 	}
-	@Override
-	public String getDetails() {
-		
-		return null;
-	}
-
 }
-
-// nsewel younes ela ai f terminal 
