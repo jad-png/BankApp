@@ -7,6 +7,7 @@ public class CompteCourant extends Compte {
 		super(code, userName);
 		this.decouvert = decouvert;
 	}
+	
 
 	public double getDecouvert() {
 		return decouvert;
@@ -17,20 +18,36 @@ public class CompteCourant extends Compte {
 	}
 	
 	@Override
-	public void deposer(double montant) {
-		// TODO Auto-generated method stub
-
+	public double calculerInteret() {
+		// compte courant n'a pas d'interets		
+		return 0;
 	}
 
 	@Override
-	public void retirer(double montant) {
-		// TODO Auto-generated method stub
-
+	public void retirer(Retrait op) {
+		if (op.getMontant() <= 0) {
+            throw new IllegalArgumentException("Le montant doit etre positif");
+		}
+		
+		if (getSolde() - op.getMontant() < -decouvert) {
+			throw new IllegalArgumentException("Retrait refuse: depassement du decouvert autorise");
+		}
+		
+		setSolde(getSolde() - op.getMontant());
+		getListeOperations().add(op);
 	}
 	
 	@Override
-	public void affichierDetails() {
-		
+	public void AffichierDetails() {
+		System.out.println("=== Compte Courant ===");
+        System.out.println("Code: " + getCode());
+        System.out.println("Titulaire: " + getUserName());
+        System.out.println("Solde: " + getSolde() + " DH");
+        System.out.println("Découvert autorisé: " + decouvert + " DH");
 	}
+	
+//	public double calculerInteret(double solde) {
+//		// calculate account's interest based on it's balance, following this operation solde * tauxInteret
+//	}
 
 }

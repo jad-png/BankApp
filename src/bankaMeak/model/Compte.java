@@ -7,7 +7,7 @@ public abstract class Compte {
 	private String userName;
 	private int code;
 	private double solde;
-//	private List<Operation> listeOperations = new ArrayList<>();
+	private List<Operation> listeOperations = new ArrayList<>();
 	
 	public Compte (int code, String userName) {
 		this.code = code;
@@ -27,7 +27,7 @@ public abstract class Compte {
 		this.userName = userName;
 	}
 	
-	public int getCOde() {
+	public int getCode() {
 		return code;
 	}
 	
@@ -39,9 +39,20 @@ public abstract class Compte {
 		this.solde = solde;
 	}
 	
-	public abstract void calculerInteret(double solde);
-	public abstract void retirer(Operation op);
+	public List<Operation> getListeOperations() {
+		return listeOperations;
+	}
+	
+	public void verser(Versement op) {
+		if (op.getMontant() <= 0) {
+			throw new IllegalArgumentException("Le montant doit etre positif");
+		}
+		solde += op.getMontant();
+		listeOperations.add(op);
+	}
+	
+	public abstract double calculerInteret();
+	public abstract void retirer(Retrait op);
 	public abstract void AffichierDetails();
 
-	
 }
