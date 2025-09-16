@@ -30,7 +30,7 @@ public class BankService {
 		compteRepo.ajouterCompte(compte);
 	}
 	
-	// Deposit
+	// Withdraw
 	public void retrait(String code, double montant, String destination) {
 		Compte compte = compteRepo.chercherCompte(code);
 		
@@ -41,5 +41,9 @@ public class BankService {
 		compte.retirer(new Retrait(montant, destination));
 	}
 	
+	// Deposit
+	public void virement(String codeSource, String codeDest, double montant) {
+		
+	}
 	
 }
