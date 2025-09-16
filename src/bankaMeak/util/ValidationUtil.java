@@ -22,4 +22,15 @@ public class ValidationUtil {
 			throw new IllegalArgumentException("Montant invalide, il doit etre positif");
 		}
 	}
+	
+	public static boolean isValidName(String name) {
+		if(name == null) return false;
+		return name.matches("[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]");
+	}
+	
+	public static void validateName(String name) {
+		if (!isValidName(name)) {
+			throw new IllegalArgumentException("Nom d'utilisateur invalide.");
+		}
+	}
 }
