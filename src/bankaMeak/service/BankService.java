@@ -1,6 +1,7 @@
 package bankaMeak.service;
 
 import bankaMeak.repository.CompteRepository;
+import bankaMeak.model.*;
 
 public class BankService {
 	// TODO: this class needs these following methods: 
@@ -18,4 +19,27 @@ public class BankService {
 	}
 	
 	// acc creation String code, String userName, double decouvert
+	
+	public void creerCompteCourant(String code, String userName, double decouvert) {
+		Compte compte = new CompteCourant(code, userName, decouvert);
+		compteRepo.ajouterCompte(compte);
+	}
+	
+	public void creerCompteEpargne(String code,String userName, double tauxInteret) {
+		Compte compte = new CompteEpargne(code, userName, tauxInteret);
+		compteRepo.ajouterCompte(compte);
+	}
+	
+	// Deposit
+	public void retrait(String code, double montant, String destination) {
+		Compte compte = compteRepo.chercherCompte(code);
+		
+		if (compte == null) {
+			throw new IllegalArgumentException("Comte introuvable: " + code);
+		}
+		
+		compte.retirer(new Retrait(montant, destination));
+	}
+	
+	
 }
