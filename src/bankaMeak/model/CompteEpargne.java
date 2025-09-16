@@ -3,7 +3,7 @@ package bankaMeak.model;
 public class CompteEpargne extends Compte {
 	private double tauxInteret;
 
-	public CompteEpargne(int code, String userName, double tauxInteret) {
+	public CompteEpargne(String code, String userName, double tauxInteret) {
 		super(code, userName);
 		this.tauxInteret = tauxInteret;
 	}

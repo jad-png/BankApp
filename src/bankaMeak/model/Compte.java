@@ -5,11 +5,11 @@ import java.util.List;
 
 public abstract class Compte {
 	private String userName;
-	private int code;
+	private String code;
 	private double solde;
 	private List<Operation> listeOperations = new ArrayList<>();
 	
-	public Compte (int code, String userName) {
+	public Compte (String code, String userName) {
 		this.code = code;
 		this.userName = userName;
 		this.solde = 0;
@@ -27,7 +27,7 @@ public abstract class Compte {
 		this.userName = userName;
 	}
 	
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 	
