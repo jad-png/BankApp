@@ -55,7 +55,6 @@ public class BankService {
 		
 	}
 	
-	
 	// Transfer
 	public void virement(String codeSource, String codeDest, double montant) {
 		Compte source = compteRepo.chercherCompte(codeSource);

@@ -26,16 +26,22 @@ public class Main {
 	               
 	               switch (choice) {
 	               		case 1: 
+	               			// CreerCompteMenu
 	            	   		break;
 	               		case 2: 
+	               			// VersementMenu 
 	            	   		break;
 	               		case 3: 
+	               			// RetraitMenu
 	            	   		break;
 	               		case 4: 
+	               			// VirementMenu
 	            	   		break;
 	               		case 5:
+	               			// ConsulterSoldeMenu	               			
 	               			break;
-	               		case 6: 
+	               		case 6:
+	               			// ConsulterOperationsMenu
 	               			break;
 	               		case 0:
 	                        System.out.println("Merci d'avoir utilisé notre système bancaire !");
