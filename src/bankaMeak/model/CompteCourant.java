@@ -36,18 +36,4 @@ public class CompteCourant extends Compte {
 		setSolde(getSolde() - op.getMontant());
 		getListeOperations().add(op);
 	}
-	
-	@Override
-	public void AffichierDetails() {
-		System.out.println("=== Compte Courant ===");
-        System.out.println("Code: " + getCode());
-        System.out.println("Titulaire: " + getUserName());
-        System.out.println("Solde: " + getSolde() + " DH");
-        System.out.println("Découvert autorisé: " + decouvert + " DH");
-	}
-	
-//	public double calculerInteret(double solde) {
-//		// calculate account's interest based on it's balance, following this operation solde * tauxInteret
-//	}
-
 }

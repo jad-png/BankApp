@@ -53,6 +53,4 @@ public abstract class Compte {
 	
 	public abstract double calculerInteret();
 	public abstract void retirer(Retrait op);
-	public abstract void AffichierDetails();
-
 }
