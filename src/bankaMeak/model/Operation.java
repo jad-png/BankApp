@@ -8,11 +8,13 @@ public abstract class Operation {
 	private UUID id;
 	private LocalDate date;
 	private double montant;
+	private String type;
 	
-	public Operation(LocalDate date, double montant) {
+	public Operation(double montant, String type) {
 		this.id = UUID.randomUUID();
-		this.date = date;
+		this.date = LocalDate.now();
 		this.montant = montant;
+		this.setType(type);
 	}
 	
 	public UUID getId() {
@@ -37,4 +39,12 @@ public abstract class Operation {
 	}
 	
     public abstract String getDetails();
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
 }
