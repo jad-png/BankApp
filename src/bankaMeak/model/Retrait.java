@@ -1,19 +1,18 @@
 package bankaMeak.model;
 
-import java.time.LocalDate;
-
 public class Retrait extends Operation {
+	public String destination;
 
-	public Retrait(LocalDate date, double montant) {
-		super(date, montant);
-		// TODO Auto-generated constructor stub
+	public Retrait(double montant, String destination) {
+		super(montant, "Retrait");
+		this.destination = destination;
 	}
 
-	public String destination;
-	
+	public String getDestination() {
+		return destination;
+	}
 	@Override
 	public String getDetails() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

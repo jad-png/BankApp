@@ -1,11 +1,24 @@
 package bankaMeak.model;
 
-public class Versement extends Operation {
+import java.time.LocalDate;
 
+public class Versement extends Operation {
+	public String source;
+
+	public Versement(double montant, String source) {
+		super(montant, "Versement");
+		this.source = source;
+	}
+
+	public String getSource() {
+		return source;
+	}
 	@Override
 	public String getDetails() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 }
+
+// nsewel younes ela ai f terminal 
