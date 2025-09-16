@@ -1,4 +1,4 @@
-package bankaMeak;
+package bankaMeak.repository;
 
 import bankaMeak.model.Compte;
 
