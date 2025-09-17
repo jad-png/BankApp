@@ -3,13 +3,15 @@ package bankaMeak;
 import java.util.Scanner;
 
 import bankaMeak.service.BankService;
+import bankaMeak.repository.CompteRepository;
 import bankaMeak.util.*;
 import bankaMeak.ui.*;
 
 public class Main {
 	
 	public static void main(String[] args) {
-		BankService bankSer = new BankService();
+		CompteRepository repo = new CompteRepository();
+		BankService bankSer = new BankService(repo);
 		
 		try {
 			int choice; 
@@ -24,6 +26,7 @@ public class Main {
 	               System.out.println("0. Quitter");
 	                
 	               choice = InputUtil.readInt("Entrer votre choix: ");
+	               
 	               
 	               switch (choice) {
 	               		case 1: 
@@ -42,7 +45,7 @@ public class Main {
 	               			 new ConsulterSoldeMenu(bankSer).execute();	               			
 	               			break;
 	               		case 6:
-	               			// ConsulterOperationsMenu
+	               			new ConsulterOperationsMenu(bankSer).execute();
 	               			break;
 	               		case 0:
 	                        System.out.println("Merci d'avoir utilisé notre système bancaire !");
@@ -50,7 +53,7 @@ public class Main {
 	               		default: 
 	               			System.out.println("Choix invalide !");
 	               }
-			} while (choice != 0)
+			} while (choice != 0);
 		} catch (Exception e) {
 			System.err.println("Une erreur est servenue :" + e.getMessage());
 			e.printStackTrace();
