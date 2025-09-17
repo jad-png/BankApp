@@ -24,10 +24,22 @@ public class CreateCompteMenu {
 			
 			switch (type) {
 			case 1:
+				double decouvert = InputUtil.readDouble("Entrer votre decouvert: ");
+				ValidationUtil.isValidAmount(decouvert);
+				bankService.creerCompteCourant(code, userName, decouvert);
+                System.out.println("Compte courant cree avec succes");
 				// TODO: write the logic for creating an ActualAccount, with reading first deposit(decouvert) 
 				// and validating the input, then calling bankService to acces the creerCompteCourent method and pass it the parametre 
 				break;
 			case 2: 
+				double tauxInteret = InputUtil.readDouble("Entrer le taux d'interet qui vous interessant (le maximum taux available est 5%): ");
+				// -- TODO: make a conditio that limit insterest written by user --
+				if (tauxInteret <= 0 || tauxInteret >= 1) {
+                    throw new IllegalArgumentException("Le taux doit être compris entre 0 et 1 (ex: 0.03 = 3%)");
+				}
+				
+				bankService.creerCompteEpargne(code, userName, tauxInteret);
+                System.out.println("Compte Epergne cree avec succes");
 				// TODO: write logic for SavingAccount, with defining a condition for interests user want then update 
 				// it to be calculated based on the amount user inserted innit
 				break;
