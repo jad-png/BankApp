@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import bankaMeak.service.BankService;
 import bankaMeak.util.*;
+import bankaMeak.ui.*;
 
 public class Main {
 	
@@ -26,10 +27,11 @@ public class Main {
 	               
 	               switch (choice) {
 	               		case 1: 
-	               			// CreerCompteMenu
+	               			new CreateCompteMenu(bankSer).execute();
 	            	   		break;
 	               		case 2: 
 	               			// VersementMenu 
+	               			new VersementMenu(bankSer).execute();
 	            	   		break;
 	               		case 3: 
 	               			// RetraitMenu
