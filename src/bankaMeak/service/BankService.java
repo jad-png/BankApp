@@ -32,6 +32,17 @@ public class BankService {
 		compteRepo.ajouterCompte(compte);
 	}
 	
+	// Withdraw
+		public void retrait(String code, double montant, String destination) {
+			Compte compte = compteRepo.chercherCompte(code);
+			
+			if (compte == null) {
+				throw new IllegalArgumentException("Comte introuvable: " + code);
+			}
+			
+			compte.retirer(new Retrait(montant, destination));
+		}
+		
 	// Deposit
 		public void versement(String code, double montant, SourceVersement source) {
 			Compte compte = compteRepo.chercherCompte(code);
@@ -44,17 +55,6 @@ public class BankService {
 			
 		}
 		
-	// Withdraw
-	public void retrait(String code, double montant, String destination) {
-		Compte compte = compteRepo.chercherCompte(code);
-		
-		if (compte == null) {
-			throw new IllegalArgumentException("Comte introuvable: " + code);
-		}
-		
-		compte.retirer(new Retrait(montant, destination));
-	}
-	
 	// Transfer
 	public void virement(String codeSource, String codeDest, double montant) {
 		Compte source = compteRepo.chercherCompte(codeSource);
@@ -65,7 +65,7 @@ public class BankService {
 		}
 		
 		source.retirer(new Retrait(montant, "Virement vers " + codeDest));
-		destinaire.verser(new Versement(montant, "Virement recu de " + codeSource));
+		destinaire.verser(new Virement(montant, codeSource, codeDest));
 	}
 	
 	// balance

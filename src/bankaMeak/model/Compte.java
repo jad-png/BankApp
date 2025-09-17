@@ -15,10 +15,6 @@ public abstract class Compte {
 		this.solde = 0;
 	}
 
-//	public Compte(int code2, String userName2) {
-//		// TODO Auto-generated constructor stub
-//	}
-
 	public String getUserName() {
 		return userName;
 	}
@@ -42,8 +38,8 @@ public abstract class Compte {
 	public List<Operation> getListeOperations() {
 		return listeOperations;
 	}
-	
-	public void verser(Versement op) {
+	// TOFIX
+	public void verser(Operation op) {
 		if (op.getMontant() <= 0) {
 			throw new IllegalArgumentException("Le montant doit etre positif");
 		}
