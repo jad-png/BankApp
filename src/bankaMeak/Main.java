@@ -39,7 +39,7 @@ public class Main {
 	               			 new VirementMenu(bankSer).execute();
 	            	   		break;
 	               		case 5:
-	               			// ConsulterSoldeMenu	               			
+	               			 new ConsulterSoldeMenu(bankSer).execute();	               			
 	               			break;
 	               		case 6:
 	               			// ConsulterOperationsMenu
