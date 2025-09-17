@@ -14,7 +14,7 @@ public class VersementMenu {
 
     public void execute() {
         try {
-            String code = InputUtil.readString("Saisir votre code: ");
+            String code = InputUtil.readString("Saisir votre code (format: CPT-12345): ");
             ValidationUtil.validateCode(code);
 
             double montant = InputUtil.readDouble("Saisir le montant à verser: ");

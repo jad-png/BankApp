@@ -8,7 +8,10 @@ public class CompteEpargne extends Compte {
 		this.tauxInteret = tauxInteret;
 	}
 
-
+	public double getTauxInteret() {
+		return tauxInteret;
+	}
+	
 	@Override
 	public double calculerInteret() {
 		// TODO calculate account's interest based on it's balance.

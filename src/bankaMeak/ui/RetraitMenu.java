@@ -13,7 +13,7 @@ public class RetraitMenu {
 	
 	public void execute() {
 		try {
-			String code = InputUtil.readString("Entrer le code ud compte: ");
+			String code = InputUtil.readString("Entrer le code ud compte (format: CPT-12345): ");
 			ValidationUtil.validateCode(code);
 			
 			double montant = InputUtil.readDouble("ENtrer le montant qu vous voudrer retrait: ");

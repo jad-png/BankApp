@@ -3,9 +3,9 @@ package bankaMeak.model;
 public class CompteCourant extends Compte {
 	private double decouvert;
 	
-	public CompteCourant(String code, String userName, double decouvert) {
+	public CompteCourant(String code, String userName) {
 		super(code, userName);
-		this.decouvert = decouvert;
+		this.decouvert = 600;
 	}
 	
 

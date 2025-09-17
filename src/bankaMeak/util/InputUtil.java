@@ -23,7 +23,7 @@ public class InputUtil {
 	}
 	
 	public static String readString(String msg) {
-		System.out.println(msg);
+		System.out.print(msg);
 		return sc.next();
 	}
 }

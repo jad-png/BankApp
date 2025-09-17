@@ -21,15 +21,33 @@ public class BankService {
 		this.compteRepo = repo;
 	}
 	
-	// acc creation String code, String userName, double decouvert
-	public void creerCompteCourant(String code, String userName, double decouvert) {
-		Compte compte = new CompteCourant(code, userName, decouvert);
-		compteRepo.ajouterCompte(compte);
+	public Compte chercherCompte(String code) {
+	    return compteRepo.chercherCompte(code);
 	}
 	
-	public void creerCompteEpargne(String code,String userName, double tauxInteret) {
+	// acc creation String code, String userName, double decouvert
+	public Compte creerCompteCourant(String userName) {
+		String code = compteRepo.generatedNextCode();
+//
+//		System.out.println(code);
+
+		Compte compte = new CompteCourant(code, userName);
+		
+		compteRepo.ajouterCompte(compte);
+		
+		return compte;
+		
+//		System.out.println("5");
+
+	}
+	
+	public Compte creerCompteEpargne(String userName, double tauxInteret) {
+		String code = compteRepo.generatedNextCode();
+
 		Compte compte = new CompteEpargne(code, userName, tauxInteret);
 		compteRepo.ajouterCompte(compte);
+		
+		return compte;
 	}
 	
 	// Withdraw
@@ -89,4 +107,7 @@ public class BankService {
 		return compte.getListeOperations();
 	}
 	
+	public Compte getLastCreatedCompte() {
+		return compteRepo.getLastCreatedCompte();
+	}
 }

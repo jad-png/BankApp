@@ -1,5 +1,6 @@
 package bankaMeak.ui;
 	
+import bankaMeak.model.Compte;
 import bankaMeak.service.*;
 import bankaMeak.util.InputUtil;
 import bankaMeak.util.ValidationUtil;
@@ -14,19 +15,20 @@ public class CreateCompteMenu {
 	public void execute() {
 		try {
 			
-			String code = InputUtil.readString("Entrer votre code (format e.g: CPT-12345): ");
-			ValidationUtil.isValidCode(code);
 			
 			String userName = InputUtil.readString("Entrer votre nom d'utilisateu: ");
-			// TODO: add a validation method to validate the input
 			
 			int type = InputUtil.readInt("Type de compte (1 = Courant, 2 = Epargne): ");
 			
+			Compte createdCompte = null;
+			
 			switch (type) {
 			case 1:
-				double decouvert = InputUtil.readDouble("Entrer votre decouvert: ");
-				ValidationUtil.isValidAmount(decouvert);
-				bankService.creerCompteCourant(code, userName, decouvert);
+				bankService.creerCompteCourant(userName);
+				
+                createdCompte = bankService.getLastCreatedCompte();
+                createdCompte.displayDetailsTable();
+                
                 System.out.println("Compte courant cree avec succes");
 				// TODO: write the logic for creating an ActualAccount, with reading first deposit(decouvert) 
 				// and validating the input, then calling bankService to acces the creerCompteCourent method and pass it the parametre 
@@ -38,7 +40,10 @@ public class CreateCompteMenu {
                     throw new IllegalArgumentException("Le taux doit être compris entre 0 et 1 (ex: 0.03 = 3%)");
 				}
 				
-				bankService.creerCompteEpargne(code, userName, tauxInteret);
+				bankService.creerCompteEpargne(userName, tauxInteret);
+
+				createdCompte = bankService.getLastCreatedCompte();
+				createdCompte.displayDetailsTable();
                 System.out.println("Compte Epergne cree avec succes");
 				// TODO: write logic for SavingAccount, with defining a condition for interests user want then update 
 				// it to be calculated based on the amount user inserted innit
@@ -49,6 +54,8 @@ public class CreateCompteMenu {
 			
 		} catch (Exception e) {
 			System.out.println("Erreur lors de la creation du compte: " + e.getMessage());
+		    e.printStackTrace(); // shows exactly where the null came from
+
 		}
 	}
 }
