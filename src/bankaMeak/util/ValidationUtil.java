@@ -1,6 +1,12 @@
 package bankaMeak.util;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class ValidationUtil {
+	
+    private static final List<String> ALLOWED_DESTINATIONS = Arrays.asList("ATM", "AGENCE", "ONLINE");
+
 	// TODO: Here in this class i need to add a method that checks the code format, positive amounts, ids, and password verification
 	public static boolean isValidCode(String code) {
 		if (code == null) return false;
@@ -33,4 +39,14 @@ public class ValidationUtil {
 			throw new IllegalArgumentException("Nom d'utilisateur invalide.");
 		}
 	}
+	
+	public static void validateDestination(String destination) {
+        if (destination == null || destination.trim().isEmpty()) {
+            throw new IllegalArgumentException("La destination ne peut pas etre vide");
+        }
+        String upperDest = destination.toUpperCase();
+        if (!ALLOWED_DESTINATIONS.contains(upperDest)) {
+            throw new IllegalArgumentException("Destination invalide. Options valides : " + ALLOWED_DESTINATIONS);
+        }
+    }
 }
