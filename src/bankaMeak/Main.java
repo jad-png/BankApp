@@ -30,14 +30,13 @@ public class Main {
 	               			new CreateCompteMenu(bankSer).execute();
 	            	   		break;
 	               		case 2: 
-	               			// VersementMenu 
 	               			new VersementMenu(bankSer).execute();
 	            	   		break;
 	               		case 3: 
-	               			// RetraitMenu
+	               			 new RetraitMenu(bankSer).execute();
 	            	   		break;
 	               		case 4: 
-	               			// VirementMenu
+	               			 new VirementMenu(bankSer).execute();
 	            	   		break;
 	               		case 5:
 	               			// ConsulterSoldeMenu	               			

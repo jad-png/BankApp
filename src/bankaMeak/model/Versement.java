@@ -1,14 +1,14 @@
 package bankaMeak.model;
 
 public class Versement extends Operation {
-	public String source;
+	public SourceVersement source;
 
-	public Versement(double montant, String source) {
+	public Versement(double montant, SourceVersement source) {
 		super(montant, "Versement");
 		this.source = source;
 	}
 
-	public String getSource() {
+	public SourceVersement getSource() {
 		return source;
 	}
 }

@@ -3,6 +3,8 @@ package bankaMeak.util;
 import java.util.Arrays;
 import java.util.List;
 
+import bankaMeak.model.SourceVersement;
+
 public class ValidationUtil {
 	
     private static final List<String> ALLOWED_DESTINATIONS = Arrays.asList("ATM", "AGENCE", "ONLINE");
@@ -47,6 +49,16 @@ public class ValidationUtil {
         String upperDest = destination.toUpperCase();
         if (!ALLOWED_DESTINATIONS.contains(upperDest)) {
             throw new IllegalArgumentException("Destination invalide. Options valides : " + ALLOWED_DESTINATIONS);
+        }
+    }
+	
+	public static SourceVersement validateSource(int choice) {
+        switch (choice) {
+            case 1: return SourceVersement.AGENCY;
+            case 2: return SourceVersement.ATM;
+            case 3: return SourceVersement.ONLINE;
+            case 4: return SourceVersement.MOBILE;
+            default: throw new IllegalArgumentException("Source invalide !");
         }
     }
 }
