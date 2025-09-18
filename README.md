@@ -93,7 +93,7 @@ java -cp out bankaMeak.Main
 
 ## Captures d'écran
 
-![Menu principal](screenshots/menu_principal.png)
+![Menu principal](screenshots/menu-principal.png)
 ![Création de compte](screenshots/creation_compte.png)
 ![Historique des opérations](screenshots/historique_operations.png)
 
