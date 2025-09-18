@@ -93,8 +93,6 @@ java -cp out bankaMeak.Main
 
 ## Captures d'écran
 
-> *Ajoutez ici des captures d’écran de l’application en fonctionnement (menus, création de compte, consultation du solde, etc.)*
-
 ![Menu principal](screenshots/menu_principal.png)
 ![Création de compte](screenshots/creation_compte.png)
 ![Historique des opérations](screenshots/historique_operations.png)
