@@ -96,7 +96,7 @@ java -cp out bankaMeak.Main
 ![Menu principal](screenshots/menu-principal.png)
 ![Création de compte](screenshots/creation_compte.png)
 ![Historique des opérations](screenshots/historique_operations.png)
-![Diagramme de Classe](screenshots/class_diagram.png)
+![Diagramme de Classe](screenshots/class_diagrram.png)
 
 ---
 
