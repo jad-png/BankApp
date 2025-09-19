@@ -36,7 +36,7 @@ public class BankUI {
         System.out.println("0. Quitter");
     }
 
-    private void handleChoice(int choice) {
+    private void handleChoice(int choice) throws CompteNotFoundException {
             switch (choice) {
                 case 1: new CreateCompteMenu(bankSer).execute(); break;
                 case 2: new VersementMenu(bankSer).execute(); break;

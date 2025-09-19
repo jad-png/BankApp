@@ -27,20 +27,14 @@ public class BankService {
 	    return compteRepo.chercherCompte(code);
 	}
 	
-	// acc creation String code, String userName, double decouvert
 	public Compte creerCompteCourant(String userName) {
 		String code = compteRepo.generatedNextCode();
-//
-//		System.out.println(code);
 
 		Compte compte = new CompteCourant(code, userName);
 		
 		compteRepo.ajouterCompte(compte);
 		
 		return compte;
-		
-//		System.out.println("5");
-
 	}
 	
 	public Compte creerCompteEpargne(String userName, double tauxInteret) {
@@ -89,13 +83,13 @@ public class BankService {
 	}
 	
 	// balance
-	public double consulterSolde(String code) throws CompteNotFoundException {
+	public double consulterSolde(String code) throws CompteNotFoundException, SoldeInsuffisantException {
 		Compte compte = compteRepo.chercherCompte(code);
 		double solde =	compte.getSolde();		
 		
 		if (solde == 0) throw new SoldeInsuffisantException("Solde Insufissant. ");
 		
-		return solde
+		return solde;
 	}
 	
 	// Operations List

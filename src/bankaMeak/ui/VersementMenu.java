@@ -3,6 +3,7 @@ package bankaMeak.ui;
 import bankaMeak.service.BankService;
 import bankaMeak.util.InputUtil;
 import bankaMeak.util.ValidationUtil;
+import bankaMeak.exception.CompteNotFoundException;
 import bankaMeak.model.SourceVersement;
 
 public class VersementMenu {
@@ -12,7 +13,7 @@ public class VersementMenu {
         this.bankSer = bankService;
     }
 
-    public void execute() {
+    public void execute() throws CompteNotFoundException {
         try {
             String code = InputUtil.readString("Saisir votre code (format: CPT-12345): ");
             ValidationUtil.validateCode(code);
