@@ -33,7 +33,7 @@ public class BankUI {
     }
     
     private void executeCommand(int choice) {
-        Command command = menuCommand.get(choice);
+        Command command = menuCommands.get(choice);
         if (command != null) {
             try {
                 command.execute();
@@ -58,9 +58,9 @@ public class BankUI {
     }
     
     private void initializeCommands() {
-        menuCommands.put(1, new CreateCompteCommand(bankSer));
-        menuCommands.put(2, new VersementCommand(bankSer));
-        menuCommands.put(3, new RetraitCommand(bankSer));
+    	menuCommands.put(1, new CreateCompteCommand(bankSer));
+    	menuCommands.put(2, new VersementCommand(bankSer));
+    	menuCommands.put(3, new RetraitCommand(bankSer));
         menuCommands.put(4, new VirementCommand(bankSer));
         menuCommands.put(5, new SoldeCommand(bankSer));
         menuCommands.put(6, new OperationsCommand(bankSer));
