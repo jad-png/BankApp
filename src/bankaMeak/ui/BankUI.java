@@ -1,7 +1,51 @@
 package bankaMeak.ui;
 
+import bankaMeak.service.BankService;
+import bankaMeak.util.InputUtil;
+
 public class BankUI {
-	// TODO: connect the service layer with the ui and make a color based menu well organized and designed with help from AI and GUI libraries
-	// and the main menu must contain the following cases: 
-	// Creer un compte, Effectuer un versement, Effectuer un retrait, - un virement, Consulter un  operations, Quitter.
+	private BankService bankSer;
+	
+	public BankUI(BankService bankService) {
+		this.bankSer = bankService;
+	}
+	
+	public void start() {
+		try {
+			int choice; 
+			do {
+				showMenu();
+				InputUtil.readInt("Entrer votre choix: ");
+				handleChoice(choice);
+			} while (choice != 0);
+		} catch (Exception e) {
+			System.err.println("Une erreur est servenue :" + e.getMessage());
+			e.printStackTrace();
+		}
+	}
+	
+	public void showMenu() {
+		 	System.out.println("\n===== MENU BANCAIRE =====");
+	        System.out.println("1. Créer un compte");
+	        System.out.println("2. Effectuer un versement");
+	        System.out.println("3. Effectuer un retrait");
+	        System.out.println("4. Effectuer un virement");
+	        System.out.println("5. Consulter solde");
+	        System.out.println("6. Consulter opérations");
+	        System.out.println("0. Quitter");
+	}
+	
+	public void handleChoice(int choice) {
+		switch (choice) {
+		case 1: new CreateCompteMenu(bankSer).execute(); break;
+	    case 2: new VersementMenu(bankSer).execute(); break;
+	    case 3: new RetraitMenu(bankSer).execute(); break;
+	    case 4: new VirementMenu(bankSer).execute(); break;
+	    case 5: new ConsulterSoldeMenu(bankSer).execute(); break;
+	    case 6: new ConsulterOperationsMenu(bankSer).execute(); break;
+	    case 0: System.out.println("Merci d'avoir utilisé notre système bancaire !"); break;
+	    default: System.out.println("Choix invalide !");
+
+		}
+	}
 }
