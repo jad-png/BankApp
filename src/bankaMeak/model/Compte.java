@@ -1,9 +1,11 @@
 package bankaMeak.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Compte {
+public abstract class Compte implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String userName;
 	private String code;
 	private double solde;
