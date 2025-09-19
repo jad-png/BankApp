@@ -2,6 +2,7 @@ package bankaMeak.repository;
 
 import bankaMeak.model.Compte;
 
+import bankaMeak.exception.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -27,8 +28,12 @@ public class CompteRepository {
         insertionOrder.add(compte.getCode());    
 	}
 	
-	public Compte chercherCompte(String code) {
-		return comptes.get(code);
+	public Compte chercherCompte(String code) throws CompteNotFoundException {
+		Compte compte = comptes.get(code);
+		if (compte == null) {
+			throw new CompteNotFoundException("Compte introuvable: ");
+		}
+		return compte;
 	}
 	
 	public Collection<Compte> getAllComptes() {

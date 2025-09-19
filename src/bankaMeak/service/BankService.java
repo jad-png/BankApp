@@ -3,6 +3,8 @@ package bankaMeak.service;
 import java.util.List;
 
 import bankaMeak.repository.CompteRepository;
+import bankaMeak.exception.CompteNotFoundException;
+import bankaMeak.exception.SoldeInsuffisantException;
 import bankaMeak.model.*;
 
 public class BankService {
@@ -21,7 +23,7 @@ public class BankService {
 		this.compteRepo = repo;
 	}
 	
-	public Compte chercherCompte(String code) {
+	public Compte chercherCompte(String code) throws CompteNotFoundException {
 	    return compteRepo.chercherCompte(code);
 	}
 	
@@ -51,7 +53,7 @@ public class BankService {
 	}
 	
 	// Withdraw
-		public void retrait(String code, double montant, String destination) {
+		public void retrait(String code, double montant, String destination) throws CompteNotFoundException {
 			Compte compte = compteRepo.chercherCompte(code);
 			
 			if (compte == null) {
@@ -62,7 +64,7 @@ public class BankService {
 		}
 		
 	// Deposit
-		public void versement(String code, double montant, SourceVersement source) {
+		public void versement(String code, double montant, SourceVersement source) throws CompteNotFoundException {
 			Compte compte = compteRepo.chercherCompte(code);
 			
 			if (compte == null) {
@@ -74,7 +76,7 @@ public class BankService {
 		}
 		
 	// Transfer
-	public void virement(String codeSource, String codeDest, double montant) {
+	public void virement(String codeSource, String codeDest, double montant) throws CompteNotFoundException {
 		Compte source = compteRepo.chercherCompte(codeSource);
 		Compte destinaire = compteRepo.chercherCompte(codeDest);
 		
@@ -87,17 +89,17 @@ public class BankService {
 	}
 	
 	// balance
-	public double consulterSolde(String code) {
+	public double consulterSolde(String code) throws CompteNotFoundException {
 		Compte compte = compteRepo.chercherCompte(code);
+		double solde =	compte.getSolde();		
 		
-		if (compte == null) {
-			throw new IllegalArgumentException("Compte introuvable :" + code);
-		}
-		return compte.getSolde();
+		if (solde == 0) throw new SoldeInsuffisantException("Solde Insufissant. ");
+		
+		return solde
 	}
 	
 	// Operations List
-	public List<Operation> listerOperations(String code) {
+	public List<Operation> listerOperations(String code) throws CompteNotFoundException {
 		Compte compte = compteRepo.chercherCompte(code);
 		
 		if(compte == null) {

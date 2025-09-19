@@ -2,50 +2,50 @@ package bankaMeak.ui;
 
 import bankaMeak.service.BankService;
 import bankaMeak.util.InputUtil;
+import bankaMeak.exception.*;
 
 public class BankUI {
-	private BankService bankSer;
-	
-	public BankUI(BankService bankService) {
-		this.bankSer = bankService;
-	}
-	
-	public void start() {
-		try {
-			int choice; 
-			do {
-				showMenu();
-				InputUtil.readInt("Entrer votre choix: ");
-				handleChoice(choice);
-			} while (choice != 0);
-		} catch (Exception e) {
-			System.err.println("Une erreur est servenue :" + e.getMessage());
-			e.printStackTrace();
-		}
-	}
-	
-	public void showMenu() {
-		 	System.out.println("\n===== MENU BANCAIRE =====");
-	        System.out.println("1. Créer un compte");
-	        System.out.println("2. Effectuer un versement");
-	        System.out.println("3. Effectuer un retrait");
-	        System.out.println("4. Effectuer un virement");
-	        System.out.println("5. Consulter solde");
-	        System.out.println("6. Consulter opérations");
-	        System.out.println("0. Quitter");
-	}
-	
-	public void handleChoice(int choice) {
-		switch (choice) {
-		case 1: new CreateCompteMenu(bankSer).execute(); break;
-	    case 2: new VersementMenu(bankSer).execute(); break;
-	    case 3: new RetraitMenu(bankSer).execute(); break;
-	    case 4: new VirementMenu(bankSer).execute(); break;
-	    case 5: new ConsulterSoldeMenu(bankSer).execute(); break;
-	    case 6: new ConsulterOperationsMenu(bankSer).execute(); break;
-	    case 0: System.out.println("Merci d'avoir utilisé notre système bancaire !"); break;
-	    default: System.out.println("Choix invalide !");
+    private BankService bankSer;
 
-		}
-	}
+    public BankUI(BankService bankService) {
+        this.bankSer = bankService;
+    }
+
+    public void start() {
+        try {
+            int choice;
+            do {
+                showMenu();
+                choice = InputUtil.readInt("Entrer votre choix: ");
+                handleChoice(choice);
+            } while (choice != 0);
+        } catch (Exception e) {
+            System.err.println("Erreur inattendue : " + e.getMessage());
+            e.printStackTrace();
+        } 
+    }
+
+    private void showMenu() {
+        System.out.println("\n===== MENU BANCAIRE =====");
+        System.out.println("1. Créer un compte");
+        System.out.println("2. Effectuer un versement");
+        System.out.println("3. Effectuer un retrait");
+        System.out.println("4. Effectuer un virement");
+        System.out.println("5. Consulter solde");
+        System.out.println("6. Consulter opérations");
+        System.out.println("0. Quitter");
+    }
+
+    private void handleChoice(int choice) {
+            switch (choice) {
+                case 1: new CreateCompteMenu(bankSer).execute(); break;
+                case 2: new VersementMenu(bankSer).execute(); break;
+                case 3: new RetraitMenu(bankSer).execute(); break;
+                case 4: new VirementMenu(bankSer).execute(); break;
+                case 5: new ConsulterSoldeMenu(bankSer).execute(); break;
+                case 6: new ConsulterOperationsMenu(bankSer).execute(); break;
+                case 0: System.out.println("Merci d'avoir utilisé notre système bancaire !"); break;
+                default: System.out.println("Choix invalide !");
+            };
+    }
 }
